@@ -1,0 +1,34 @@
+{
+  "name": "crm-writer",
+  "version": "0.1.0",
+  "description": "CRM のネタ帳で「書く」を押したネタを、AI が下書きまで書いて片づける（コントリのCRMパッケージ用）",
+  "author": { "name": "コントリ" },
+  "userConfig": {
+    "crm_url": {
+      "type": "string",
+      "title": "CRM のアドレス",
+      "description": "例：https://crm.example.jp（最後の / はなし）",
+      "required": true
+    },
+    "crm_token": {
+      "type": "string",
+      "title": "CRM の鍵（APIトークン）",
+      "description": "CRM の「設定 > API」で発行した crm_ で始まる鍵。書き込みできるものを使う",
+      "required": true,
+      "sensitive": true
+    },
+    "outlets": {
+      "type": "string",
+      "title": "この PC で書く出口",
+      "description": "ネタ帳の出口の名前を , で区切る（例：代表ブログ,SNS）。ここにない出口のネタは取らない",
+      "required": true
+    }
+  },
+  "mcpServers": {
+    "crm": {
+      "type": "http",
+      "url": "${user_config.crm_url}/api/mcp",
+      "headers": { "Authorization": "Bearer ${user_config.crm_token}" }
+    }
+  }
+}

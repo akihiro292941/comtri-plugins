@@ -1,0 +1,12 @@
+{
+  "name": "comtri",
+  "owner": { "name": "コントリ" },
+  "description": "コントリの CRM パッケージで使う Claude Code のプラグイン",
+  "plugins": [
+    {
+      "name": "crm-writer",
+      "source": "./plugins/crm-writer",
+      "description": "CRM のネタ帳で「書く」を押したネタを、AI が下書きまで書いて片づける"
+    }
+  ]
+}
